@@ -75,6 +75,9 @@
                                 <state key="normal" title="NO">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="noTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3zC-P6-YGP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-iP-oCN">
                                 <rect key="frame" x="208" y="777" width="207" height="119"/>
@@ -84,6 +87,9 @@
                                 <state key="normal" title="YES">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="yesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O9u-Z4-2Qy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Does the top word match the color of the bottom word?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhR-tg-PA0">
                                 <rect key="frame" x="64" y="226" width="286" height="67"/>
@@ -96,6 +102,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="meaningLabel" destination="r09-s7-IOb" id="f25-w1-g5E"/>
+                        <outlet property="textColorLabel" destination="JUk-Ez-d92" id="eJn-Z6-xSx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
