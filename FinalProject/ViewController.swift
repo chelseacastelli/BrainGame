@@ -90,6 +90,8 @@ class ViewController: UIViewController {
       
     func generateLabels() {
         
+        answerIndicator.isHidden = true
+        
         let randomMeaning = Int.random(in: 0..<possibleColors.count)
         let randomTextColor = Int.random(in: 0..<possibleColors.count)
         let randomColor = Int.random(in: 0..<possibleUIColors.count)
