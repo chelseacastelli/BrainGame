@@ -112,6 +112,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z39-Dz-DM1">
+                                <rect key="frame" x="82" y="367" width="103" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="30"/>
+                                <state key="normal" title="Y">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1vK-LR-ant"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXn-Ep-eNf">
+                                <rect key="frame" x="235" y="367" width="103" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="30"/>
+                                <state key="normal" title="N">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dontPlayAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIN-Dh-A1r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -120,9 +144,14 @@
                         <outlet property="answerIndicator" destination="CoK-t7-kxv" id="bvc-KT-qQm"/>
                         <outlet property="headerLabel" destination="Cav-QY-ijX" id="PQD-lg-dtZ"/>
                         <outlet property="meaningLabel" destination="r09-s7-IOb" id="f25-w1-g5E"/>
+                        <outlet property="noButton" destination="hkf-f3-Xqa" id="NOY-R7-xOy"/>
+                        <outlet property="playAgainNoButton" destination="nXn-Ep-eNf" id="cEh-OM-2Pu"/>
+                        <outlet property="playAgainYesButton" destination="Z39-Dz-DM1" id="FQ3-mB-ry7"/>
                         <outlet property="scoreLabel" destination="tsq-zo-gZ1" id="dnV-QE-S97"/>
                         <outlet property="textColorLabel" destination="JUk-Ez-d92" id="eJn-Z6-xSx"/>
                         <outlet property="timeLabel" destination="k7I-e5-kyu" id="sjh-pv-eAF"/>
+                        <outlet property="titleLabel" destination="KhR-tg-PA0" id="DSa-Pb-k77"/>
+                        <outlet property="yesButton" destination="fH6-iP-oCN" id="q0k-mx-FnK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
