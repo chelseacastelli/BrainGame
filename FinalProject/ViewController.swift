@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     // Timer variables
     var gameTimer = Timer()
-    var time: Int = 61 {
+    var time: Int = 60 {
         didSet {
             timeLabel.text = String(time)
         }
@@ -41,11 +41,13 @@ class ViewController: UIViewController {
         }
     }
     
+    var correctGuesses: Int = 0
+    var incorrectGuesses: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        playAgainNoButton.isHidden = true
-        playAgainYesButton.isHidden = true
+        startScreen()
         generateLabels()
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.startGameTimer), userInfo: nil, repeats: true)
     }
@@ -56,10 +58,12 @@ class ViewController: UIViewController {
             answerIndicator.text = "Correct!"
             answerIndicator.textColor = UIColor.green
             score += 10
+            correctGuesses += 1
         } else {
             answerIndicator.text = "Wrong!"
             answerIndicator.textColor = UIColor.red
             score -= 10
+            incorrectGuesses += 1
         }
         answerIndicator.isHidden = false
         
@@ -74,11 +78,13 @@ class ViewController: UIViewController {
         if possibleColors.firstIndex(of: meaningLabel.text!) == possibleUIColors.firstIndex(of: textColorLabel.textColor) {
             answerIndicator.text = "Correct!"
             answerIndicator.textColor = UIColor.green
+            correctGuesses += 1
             score += 10
         } else {
             answerIndicator.text = "Wrong!"
             answerIndicator.textColor = UIColor.red
             score -= 10
+            incorrectGuesses += 1
         }
         answerIndicator.isHidden = false
         
@@ -87,9 +93,11 @@ class ViewController: UIViewController {
             self.generateLabels()
         }
     }
-      
+    
+    // Get random values for each label
     func generateLabels() {
         
+        // Hide answer indicator between guesses
         answerIndicator.isHidden = true
         
         let randomMeaning = Int.random(in: 0..<possibleColors.count)
@@ -101,27 +109,30 @@ class ViewController: UIViewController {
         textColorLabel.textColor = possibleUIColors[randomColor]
     }
     
+    // Count timer down by 1
+    // If timer reaches 0, display times up screen with options to play again or quit along w/ score info
     @objc func startGameTimer() {
         time -= 1
         timeLabel.text = String(time)
         
         if time == 0 {
-            noButton.isEnabled = false
-            yesButton.isEnabled = false
-            gameTimer.invalidate()
-            headerLabel.isHidden = true
-            meaningLabel.isHidden = true
-            textColorLabel.isHidden = true
-            titleLabel.text = "Do you want to play again?"
-            playAgainYesButton.isHidden = false
-            playAgainNoButton.isHidden = false
-            answerIndicator.text = "Times up!  Your score: \(score)"
-            answerIndicator.textColor = UIColor.white
-            answerIndicator.isHidden = false
+            timesUpScreen()
         }
     }
     
+    // If player wants to play again, go back to start screen & reset timer
     @IBAction func playAgain(_ sender: Any) {
+        startScreen()
+        generateLabels()
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.startGameTimer), userInfo: nil, repeats: true)
+    }
+    
+    // If user doesn't want to play again, exit app
+    @IBAction func dontPlayAgain(_ sender: Any) {
+        exit(0)
+    }
+    
+    func startScreen() {
         noButton.isEnabled = true
         yesButton.isEnabled = true
         playAgainNoButton.isHidden = true
@@ -133,13 +144,23 @@ class ViewController: UIViewController {
         textColorLabel.isHidden = false
         time = 60
         score = 0
-        
-        generateLabels()
-        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.startGameTimer), userInfo: nil, repeats: true)
+        correctGuesses = 0
+        incorrectGuesses = 0
     }
     
-    @IBAction func dontPlayAgain(_ sender: Any) {
-        exit(0)
+    func timesUpScreen() {
+        noButton.isEnabled = false
+        yesButton.isEnabled = false
+        gameTimer.invalidate()
+        headerLabel.isHidden = true
+        meaningLabel.isHidden = true
+        textColorLabel.isHidden = true
+        titleLabel.text = "Do you want to play again?"
+        playAgainYesButton.isHidden = false
+        playAgainNoButton.isHidden = false
+        answerIndicator.text = "Times up!  Your score: \(score)\nYou got \(correctGuesses) out of \(correctGuesses + incorrectGuesses)"
+        answerIndicator.textColor = UIColor.white
+        answerIndicator.isHidden = false
     }
 }
 
