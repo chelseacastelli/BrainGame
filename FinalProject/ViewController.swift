@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     // Timer variables
     var gameTimer = Timer()
-    var time: Int = 5 {
+    var time: Int = 61 {
         didSet {
             timeLabel.text = String(time)
         }
